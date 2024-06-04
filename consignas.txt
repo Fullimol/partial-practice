@@ -1,0 +1,8 @@
+Nos va a dar un archivo json o csv y vamos a hacer un programa con un menu de opciones.
+ej:
+a- cargar datos desde .csv
+b- cargar datos desde .json
+c- mostrar datos (no poder seleccionar esta opcion si aún no cargue los datos)
+d- aumentarle 20% el sueldo a los empleados de 'sistemas' y guardarlo en un archivo json o csv.
+e, f, etc... - (hacer algo con la lista de diccionario)
+g- guardar en csv o guardar en json.

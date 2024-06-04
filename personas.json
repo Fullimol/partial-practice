@@ -1,0 +1,162 @@
+[
+    {
+      "id": 1,
+      "nombre": "Franklyn",
+      "ubicacion": "Avellaneda",
+      "genero": "Male",
+      "edad": 44,
+      "sueldo": 119800
+    },
+    {
+      "id": 2,
+      "nombre": "Carri",
+      "ubicacion": "Quilmes",
+      "genero": "Female",
+      "edad": 38,
+      "sueldo": 66900
+    },
+    {
+      "id": 3,
+      "nombre": "Ewart",
+      "ubicacion": "San Fernando",
+      "genero": "Male",
+      "edad": 64,
+      "sueldo": 76800
+    },
+    {
+      "id": 4,
+      "nombre": "Dugald",
+      "ubicacion": "Lanus",
+      "genero": "Male",
+      "edad": 62,
+      "sueldo": 117900
+    },
+    {
+      "id": 5,
+      "nombre": "Harrison",
+      "ubicacion": "Avellaneda",
+      "genero": "Male",
+      "edad": 21,
+      "sueldo": 92900
+    },
+    {
+      "id": 6,
+      "nombre": "Hayes",
+      "ubicacion": "Quilmes",
+      "genero": "Male",
+      "edad": 39,
+      "sueldo": 97700
+    },
+    {
+      "id": 7,
+      "nombre": "Binky",
+      "ubicacion": "San Fernando",
+      "genero": "Male",
+      "edad": 19,
+      "sueldo": 67900
+    },
+    {
+      "id": 8,
+      "nombre": "Thedrick",
+      "ubicacion": "Lanus",
+      "genero": "Non-binary",
+      "edad": 64,
+      "sueldo": 85700
+    },
+    {
+      "id": 9,
+      "nombre": "Jamaal",
+      "ubicacion": "Avellaneda",
+      "genero": "Male",
+      "edad": 25,
+      "sueldo": 92000
+    },
+    {
+      "id": 10,
+      "nombre": "Shalom",
+      "ubicacion": "Quilmes",
+      "genero": "Male",
+      "edad": 24,
+      "sueldo": 76900
+    },
+    {
+      "id": 11,
+      "nombre": "Lea",
+      "ubicacion": "San Fernando",
+      "genero": "Female",
+      "edad": 31,
+      "sueldo": 118800
+    },
+    {
+      "id": 12,
+      "nombre": "Eba",
+      "ubicacion": "Lanus",
+      "genero": "Female",
+      "edad": 28,
+      "sueldo": 89700
+    },
+    {
+      "id": 13,
+      "nombre": "Cyril",
+      "ubicacion": "Avellaneda",
+      "genero": "Male",
+      "edad": 43,
+      "sueldo": 88800
+    },
+    {
+      "id": 14,
+      "nombre": "Syd",
+      "ubicacion": "Quilmes",
+      "genero": "Agender",
+      "edad": 64,
+      "sueldo": 78800
+    },
+    {
+      "id": 15,
+      "nombre": "Ralf",
+      "ubicacion": "San Fernando",
+      "genero": "Male",
+      "edad": 55,
+      "sueldo": 56700
+    },
+    {
+      "id": 16,
+      "nombre": "Mariel",
+      "ubicacion": "Lanus",
+      "genero": "Female",
+      "edad": 53,
+      "sueldo": 117400
+    },
+    {
+      "id": 17,
+      "nombre": "Simona",
+      "ubicacion": "Avellaneda",
+      "genero": "Female",
+      "edad": 54,
+      "sueldo": 97400
+    },
+    {
+      "id": 18,
+      "nombre": "Lowrance",
+      "ubicacion": "Quilmes",
+      "genero": "Male",
+      "edad": 63,
+      "sueldo": 84900
+    },
+    {
+      "id": 19,
+      "nombre": "Henrik",
+      "ubicacion": "San Fernando",
+      "genero": "Male",
+      "edad": 36,
+      "sueldo": 96500
+    },
+    {
+      "id": 20,
+      "nombre": "Rayner",
+      "ubicacion": "Lanus",
+      "genero": "Male",
+      "edad": 44,
+      "sueldo": 78000
+    }
+  ]
