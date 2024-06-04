@@ -53,33 +53,16 @@ def mostrar_lista_tupla(lista:list) -> None:
             print(f"{elemento}", end=" ")
         print()
 
-def consultar_lista_esta_vacia(lista:list, mensaje) -> None:
-    if len(lista) == 0:
-        print(f"{mensaje}")
 
 def consultar_numero(numero, minimo, maximo, mensaje) -> int:
     if numero < minimo or numero > maximo:
         print(f"{mensaje}")
 
 
-def aumentar_por_porcentaje(porcentaje, clave, lista:list) -> list:
-    for elemento in lista:
-        elemento[clave] = elemento[clave] + (elemento[clave] * (porcentaje / 100))
-
-
-
 def swap_lista(lista:list, i:int, j:int) -> None:
     aux = lista[i]
     lista[i] = lista[j]
     lista[j] = aux
-
-
-personas_prueba = [
-    {"id": 1, "nombre": "Franklyn", "ubicacion": "Avellaneda", "genero": "Male", "edad": 44, "sueldo": 119800},
-    {"id": 2, "nombre": "Carri", "ubicacion": "Quilmes", "genero": "Female", "edad": 20, "sueldo": 66900},
-    {"id": 3, "nombre": "Ewart", "ubicacion": "San Fernando", "genero": "Male", "edad": 20, "sueldo": 76800},
-    {"id": 4, "nombre": "Dugald", "ubicacion": "Lanus", "genero": "Male", "edad": 62, "sueldo": 117900}
-]
 
 # def ordenar_por_dos_condiciones(clave1, clave2, lista:list) -> None:
 #     tam = len(lista)
@@ -100,20 +83,6 @@ def ordenar_lista(comparator, lista:list) -> None:
                 lista[i] = lista[j]
                 lista[j] = aux
 # uso: ordenar_lista(lambda p1, p2, : p1["sueldo"] < p2["sueldo"], nombre_lista)
-
-
-# for persona in personas_prueba:
-#     print(persona)
-
-# print("-----------")
-# clave = 'sueldo'
-
-
-# ordenar_lista(lambda p1, p2: p1[clave] < p2[clave], personas_prueba)
-
-
-# for persona in personas_prueba:
-#     print(persona)
 
 
 # obtengo todos los valores que existe de una misma clave en SIN que se repitan

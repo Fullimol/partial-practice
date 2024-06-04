@@ -142,21 +142,5 @@
       "genero": "Male",
       "edad": 63,
       "sueldo": 84900
-    },
-    {
-      "id": 19,
-      "nombre": "Henrik",
-      "ubicacion": "San Fernando",
-      "genero": "Male",
-      "edad": 36,
-      "sueldo": 96500
-    },
-    {
-      "id": 20,
-      "nombre": "Rayner",
-      "ubicacion": "Lanus",
-      "genero": "Male",
-      "edad": 44,
-      "sueldo": 78000
     }
   ]

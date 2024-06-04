@@ -1,7 +1,6 @@
 from funciones import *
 from funciones_datos import *
 
-
 # Nos va a dar un archivo json o csv y vamos a hacer un programa con un menu de opciones.
 # ej:
 # a- cargar datos desde .csv
@@ -37,12 +36,14 @@ def menu_funciones():
     print("A. Cargar datos desde .csv")
     print("B. Cargar datos desde .json")
     print("C. Mostrar datos")
-    print("D. Aumentarle 20% el sueldo a los 'Femeninos' del JSON")
+    print("D. Aumentarle % el sueldo a los 'Femeninos' del JSON")
     print("E. Ordenar Listas: (CSV, JSON)")
     print("F. Criterios de filtrado: (CSV, JSON)")
+    print("G. Guardar datos en nuevo archivo: (CSV, JSON)")
+
 
     seleccion =  input(f'\n\tIngrese opcion: ').upper()
-    while seleccion not in ['A', 'B', 'C', 'D', 'E', 'F']:
+    while seleccion not in ['A', 'B', 'C', 'D', 'E', 'F', 'G']:
         print(f'ERROR: OPCION {seleccion} NO VALIDA')
         seleccion =  input(f'\n\tIngrese opcion: ').upper()
     return seleccion
@@ -53,46 +54,60 @@ while True:
         case 'A':
             lista_csv = leer_csv('personas.csv')
             print(f"LISTA .CSV GUARDADA!")
+            cambios_lista_csv = []
             pausar_consola()
         case 'B':
             lista_json = leer_json('personas.json')
             print(f"LISTA .JSON GUARDADA!")
+            cambios_lista_json = []
             pausar_consola()
         case 'C':
             print("Seleccionar:")
-            print("1 mostrar nombres de CSV")
-            print("2 mostrar nombres de JSON")
+            print("1 mostrar datos de CSV")
+            print("2 mostrar datos de JSON")
+            print("3 VOLVER")
             seleccion = input(f'\n\tIngrese opcion: ').upper()
 
             if seleccion == '1':
-                consultar_lista_esta_vacia(lista_csv, "No hay datos CSV cargados.")
-                csv_nombres = mapear_lista(lambda persona: (persona['id'], persona['nombre']), lista_csv)
-                mostrar_lista_tupla(csv_nombres)
-
+                if len(lista_csv) == 0:
+                    print("No hay datos CSV cargados.")
+                else:
+                    personas_cvs = mapear_lista(lambda persona: (persona['id'], persona['nombre'], persona["apellido"], persona["genero"], persona["edad"], persona["peso"]), lista_csv)
+                    mostrar_lista_tupla(personas_cvs)
+                
             elif seleccion == '2':
-                consultar_lista_esta_vacia(lista_json, "No hay datos JSON cargados.")
-                genero_edad = mapear_lista(lambda persona: (persona['genero'], persona['ubicacion']), lista_json)
-                mostrar_lista_tupla(genero_edad)
+                if len(lista_json) == 0:
+                    print("No hay datos JSON cargados.")
+                else:
+                    personas_json = mapear_lista(lambda persona: (persona["id"] , persona["nombre"], persona["ubicacion"], persona["genero"], persona["edad"], persona["sueldo"]), lista_json)
+                    mostrar_lista_tupla(personas_json)
+            
+            elif seleccion == '3':
+                continue
             pausar_consola()
+
         case 'D':
             if len(lista_json) == 0:
                 print("No hay datos JSON cargados.")
             else:
-                sueldos_femeninos = filtrar_lista('genero', lista_json, 'Female')
+                # sueldos_femeninos = filtrar_lista(lambda persona: persona['genero'] == 'Female', lista_json)
                 seleccion = int(input("¿Cuanto % desea aumentar?: "))
                 consultar_numero(seleccion, 1, 100, "Porcentaje no valido.")
-                aumentar_por_porcentaje(seleccion, 'sueldo', sueldos_femeninos)
+                for persona in lista_json:
+                    if persona['genero'] == 'Female':
+                        persona['sueldo'] = persona['sueldo'] * (1 + (seleccion / 100))
+                print("sueldos F aumentados")
                 cambios_lista_json.append(f"{seleccion}% aumento")
 
             pausar_consola()
         case 'E':
-            print("Seleccionar lista a ordenar: (1) CSV || (2) JSON:")
+            print("Seleccionar lista a ordenar: (1) CSV || (2) JSON || (3) VOLVER:")
             seleccion = input(f'\n\tIngrese opcion: ')
 
-            while seleccion not in ['1', '2']:
+            while seleccion not in ['1', '2', '3']:
                 print("ERROR: OPCION NO VALIDA")
                 seleccion = input(f'\n\tIngrese opcion: ')
-            
+
 
             match seleccion:
                 case '1':
@@ -115,7 +130,7 @@ while True:
                                 ordenar_lista(lambda p1, p2: p1[input_clave_ordenar] < p2[input_clave_ordenar], lista_csv)
                             else:
                                 ordenar_lista(lambda p1, p2: p1[input_clave_ordenar] > p2[input_clave_ordenar], lista_csv)
-                            cambios_lista_csv.append(f"Lista ordenada")
+                            cambios_lista_csv.append(f"ordenada x {input_clave_ordenar}")
                     # for persona in lista_csv:
                     #     print(f"{persona["nombre"]} {persona["peso"]}")
                    
@@ -139,11 +154,17 @@ while True:
                                 ordenar_lista(lambda p1, p2: p1[input_clave_ordenar] < p2[input_clave_ordenar], lista_json)
                             else:
                                 ordenar_lista(lambda p1, p2: p1[input_clave_ordenar] > p2[input_clave_ordenar], lista_json)
-                            cambios_lista_json.append(f"Lista ordenada")
+                            cambios_lista_json.append(f"ordenada x {input_clave_ordenar}")
+                    # for persona in lista_json:
+                    #     print(f"{persona["nombre"]} {persona["sueldo"]}")
+
+                case '3':
+                    continue
+
             pausar_consola()
         case 'F':
             # Filtrar por dos claves
-            print("Seleccionar lista a filtrar: (1) CSV || (2) JSON:")
+            print("Seleccionar lista a filtrar: (1) CSV || (2) JSON || (3) VOLVER:")
             seleccion = input(f'\n\tIngrese opcion: ')
 
             while seleccion not in ['1', '2']:
@@ -168,15 +189,15 @@ while True:
 
                         else:
                             if selecion_filtro == '1':
-                                lista_csv_filtrada = filtrar_lista(lambda p: p["genero"] == "Female", lista_csv)
+                                lista_csv = filtrar_lista(lambda p: p["genero"] == "Female", lista_csv)
+                                cambios_lista_csv.append(f"filtrada por Femenino")
 
                             else:
-                                lista_csv_filtrada = filtrar_lista(lambda p: p["genero"] == "Male", lista_csv)
+                                lista_csv = filtrar_lista(lambda p: p["genero"] == "Male", lista_csv)
+                                cambios_lista_csv.append(f"filtrada por Masculino")
 
-                        for persona in lista_csv_filtrada:
+                        for persona in lista_csv:
                                     print(f"{persona['nombre']} {persona['peso']}")
-
-                        cambios_lista_csv.append(f"Lista filtrada")
 
                 case '2':
                     if len(lista_json) == 0:
@@ -187,7 +208,7 @@ while True:
                         print("2) filtrar por edad menor a 40")
                         selecion_filtro = input(f"\tIngrese la opcion: ")
                         
-                        while selecion_filtro not in ['1', '2']:
+                        while selecion_filtro not in ['1', '2', '3']:
                             print("ERROR: OPCION NO VALIDA")
                             selecion_filtro = input(f"\tIngrese la opcion: ")
 
@@ -201,11 +222,43 @@ while True:
                                     print("ERROR: OPCION NO VALIDA")
                                     seleccionar_ubicacion = input("\tUbicacion: ")
 
-                                lista_filtrada = filtrar_lista(lambda persona: persona["ubicacion"] == seleccionar_ubicacion, lista_json)
+                                lista_json = filtrar_lista(lambda persona: persona["ubicacion"] == seleccionar_ubicacion, lista_json)
+                                cambios_lista_json.append(f"filtrado x {seleccionar_ubicacion}")
+                            else:
+                                lista_json = filtrar_lista(lambda persona: persona["edad"] < 40, lista_json)
+                                cambios_lista_json.append(f"filtrado x edades")
                         
-                        for persona in lista_filtrada:
+                        for persona in lista_json:
                             print(f"{persona['nombre']} {persona['ubicacion']}")
+                case '3':
+                    continue
+                
+        case 'G':
+            seleccionar_archivo = input("Seleccionar archivo: (1) CSV || (2) JSON || (3) VOLVER: ")
+            while seleccionar_archivo not in ['1', '2', '3']:
+                print("ERROR: OPCION NO VALIDA")
+                seleccionar_archivo = input("Seleccionar archivo: (1) CSV || (2) JSON: ")
 
-                        cambios_lista_json.append(f"Lista filtrada")
+            match seleccionar_archivo:
+                case '1':
+                    if len(lista_csv) == 0:
+                        print("no hay datos CSV cargados")
+                    else:
+                        print("\t(Guardar CSV)")
+                        nombre_archivo = input("Nombre del archivo: ")
+                        escribir_csv(nombre_archivo, lista_csv)
+                        cambios_lista_csv.append(f"guardada en {nombre_archivo}")
+
+                case '2':
+                    if len(lista_json) == 0:
+                        print("no hay datos JSON cargados")
+                    else:
+                        print("\t(Guardar JSON)")
+                        nombre_archivo = input("Nombre del archivo: ")
+                        escribir_json(nombre_archivo, lista_json)
+                        cambios_lista_json.append(f"guardada en {nombre_archivo}")
+
+                case '3':
+                    continue
 
             pausar_consola()

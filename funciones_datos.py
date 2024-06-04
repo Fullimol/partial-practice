@@ -30,3 +30,21 @@ def leer_json(nombre_archivo):
     import json
     with open(get_path_actual(nombre_archivo),"r", encoding="utf-8") as archivo:
         return json.load(archivo)
+    
+
+# escribir CSV:
+def escribir_csv(nombre_archivo, lista):
+    with open(get_path_actual(nombre_archivo), "w", encoding="utf-8") as archivo:
+        encabezado = ["id","nombre","apellido","genero","edad","peso"]
+        archivo.write(",".join(encabezado) + "\n")
+
+        for persona in lista:
+            linea = [str(persona["id"]), persona["nombre"], persona["apellido"], persona["genero"], str(persona["edad"]), str(persona["peso"])]
+            archivo.write(",".join(linea) + "\n")
+
+
+# escribir JSON:
+def escribir_json(nombre_archivo, lista):
+    import json
+    with open(get_path_actual(nombre_archivo), "w", encoding="utf-8") as archivo:
+        json.dump(lista, archivo)
