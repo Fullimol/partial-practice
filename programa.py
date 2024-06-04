@@ -14,10 +14,8 @@ from funciones_datos import *
 
 lista_csv = []
 lista_json = []
-
 cambios_lista_csv = []
 cambios_lista_json = []
-
 
 def menu_funciones():
     limpiar_consola()
@@ -26,11 +24,11 @@ def menu_funciones():
     if len(lista_csv) == 0:
         print("Lista CSV: (sin datos cargados)")
     else:
-        print(f"Lista CSV: Se cargaron {len(lista_csv)} || {cambios_lista_csv}")
+        print(f"Lista CSV:  Se cargaron {len(lista_csv)} datos || {cambios_lista_csv}")
     if len(lista_json) == 0:
         print("Lista JSON: (sin datos cargados)")
     else:
-        print(f"Lista JSON: Se cargaron {len(lista_json)} || {cambios_lista_json}")
+        print(f"Lista JSON: Se cargaron {len(lista_json)} datos || {cambios_lista_json}")
     print()
 
     print("A. Cargar datos desde .csv")
@@ -40,7 +38,6 @@ def menu_funciones():
     print("E. Ordenar Listas: (CSV, JSON)")
     print("F. Criterios de filtrado: (CSV, JSON)")
     print("G. Guardar datos en nuevo archivo: (CSV, JSON)")
-
 
     seleccion =  input(f'\n\tIngrese opcion: ').upper()
     while seleccion not in ['A', 'B', 'C', 'D', 'E', 'F', 'G']:
@@ -167,7 +164,7 @@ while True:
             print("Seleccionar lista a filtrar: (1) CSV || (2) JSON || (3) VOLVER:")
             seleccion = input(f'\n\tIngrese opcion: ')
 
-            while seleccion not in ['1', '2']:
+            while seleccion not in ['1', '2', '3']:
                 print("ERROR: OPCION NO VALIDA")
                 seleccion = input(f'\n\tIngrese opcion: ')
 
@@ -215,12 +212,12 @@ while True:
                         else:
                             if selecion_filtro == '1':
                                 ubicaciones_disponibles = crear_lista_con_valores_de_clave("ubicacion", lista_json)
-                                print(f"\tUbicaciones disponibles: {ubicaciones_disponibles}")
+                                print(f"Ubicaciones disponibles: {ubicaciones_disponibles}")
                                 seleccionar_ubicacion = input("\tUbicacion: ")
 
                                 while seleccionar_ubicacion not in ubicaciones_disponibles:
                                     print("ERROR: OPCION NO VALIDA")
-                                    seleccionar_ubicacion = input("\tUbicacion: ")
+                                    seleccionar_ubicacion = input("Ubicacion: ")
 
                                 lista_json = filtrar_lista(lambda persona: persona["ubicacion"] == seleccionar_ubicacion, lista_json)
                                 cambios_lista_json.append(f"filtrado x {seleccionar_ubicacion}")
