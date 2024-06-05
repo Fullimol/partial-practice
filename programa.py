@@ -12,6 +12,8 @@ from funciones_datos import *
 # e, f, etc... - (hacer algo con la lista de diccionario)
 # g- guardar en csv o guardar en json.
 
+# AGREGAR: Hacer que se guarde en el .csv todos los masculino de ambos archivos / en el .json guardar todos los femeninos.
+
 lista_csv = []
 lista_json = []
 cambios_lista_csv = []
@@ -38,13 +40,13 @@ def menu_funciones():
     print("E. Ordenar Listas: (CSV, JSON)")
     print("F. Criterios de filtrado: (CSV, JSON)")
     print("G. Guardar datos en nuevo archivo: (CSV, JSON)")
+    print("H. guardar MASCULINOS de ambos archivos en un .csv")
 
     seleccion =  input(f'\n\tIngrese opcion: ').upper()
-    while seleccion not in ['A', 'B', 'C', 'D', 'E', 'F', 'G']:
+    while seleccion not in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']:
         print(f'ERROR: OPCION {seleccion} NO VALIDA')
         seleccion =  input(f'\n\tIngrese opcion: ').upper()
     return seleccion
-
 
 while True:
     match menu_funciones():
@@ -257,5 +259,14 @@ while True:
 
                 case '3':
                     continue
+        case 'H':
+        # AGREGAR: Hacer que se guarde en el .csv todos los masculino de ambos archivos / en el .json guardar todos los femeninos.
+            # masculinos_totales = []
+            # masculinos_csv = filtrar_lista(lambda persona: persona["genero"] == "Male", lista_csv)
+            # masculinos_jsv = filtrar_lista(lambda persona: persona["genero"] == "Male", lista_json)
 
-            pausar_consola()
+            # masculinos_totales.extend(masculinos_csv)
+            # masculinos_totales.extend(masculinos_jsv)
+
+            # escribir_csv("masculinos_totales.csv", masculinos_totales)
+            pass

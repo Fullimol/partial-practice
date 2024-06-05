@@ -24,6 +24,7 @@ def mapear_lista(procesadora, lista: list) -> list:
     Returns:
         list: Nueva lista de tuplas.
     """
+    verificar_lista(lista)
     lista_retorno = []
     for elemento in lista:
         try:
@@ -35,6 +36,7 @@ def mapear_lista(procesadora, lista: list) -> list:
 
 # usamos paradigma funcional: en "filtradora" le pasamos una funcion lambda que procese cada elemento de la lista.
 def filtrar_lista(filtradora, lista:list) -> list:
+    verificar_lista(lista)
     lista_filtrada = []
     for el in lista:
         if filtradora(el):
@@ -48,6 +50,7 @@ def mostrar_lista_tupla(lista:list) -> None:
     Args:
         lista (list): pasamos la lista de tuplas a imprimir
     """
+    verificar_lista(lista)
     for tupla in lista:
         for elemento in tupla:
             print(f"{elemento}", end=" ")
@@ -75,6 +78,7 @@ def swap_lista(lista:list, i:int, j:int) -> None:
 #                 swap_lista(lista, i, j)
 
 def ordenar_lista(comparator, lista:list) -> None:
+    verificar_lista(lista)
     tam = len(lista)
     for i in range(tam - 1):
         for j in range(i + 1, tam):
@@ -87,8 +91,8 @@ def ordenar_lista(comparator, lista:list) -> None:
 
 # obtengo todos los valores que existe de una misma clave en SIN que se repitan
 def crear_lista_con_valores_de_clave(clave, lista):
+    verificar_lista(lista)
     lista = mapear_lista(lambda p: p[clave], lista)
-
     nueva_lista = []
     for elemento in lista:
             if elemento not in nueva_lista:
